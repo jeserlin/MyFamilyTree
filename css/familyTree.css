@@ -1,0 +1,13 @@
+.bg-orange {
+	background-color: #fcd8a2 !important;
+}
+.text-brown {
+	color: #7c4c04 !important;
+}
+.navbar {
+	margin-bottom: 0;
+}
+.hr-pink {
+	border-top: 2px dotted #f8cbcd;
+	padding-top: 2em;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- CSS -->
+    <link rel="stylesheet" href="plugin/bootstrap-4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/familyTree.css">
+    <!-- JS -->
+    <script defer src="plugin/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script defer src="plugin/fontawsome-5.0.6/fontawesome-all.min.js"></script>
+    <script defer src="js/familyTree.js"></script>
+</header>
+<body>
+	<nav class="navbar navbar-light bg-orange">
+	  <a class="navbar-brand text-brown" href="#">
+	    <img src="img/tree.png" width="30" height="30" class="d-inline-block align-top" alt="">
+	    My Family Tree
+	  </a>
+	</nav>
+	<div class="container pt-5">
+		<form> 
+			<div class="form-group row">
+		    	<label for="me" class="col-xs-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Me :</label>
+		    	<div class="col-xs-12 col-sm-8 col-md-6">
+		      		<input type="text" class="form-control" id="me" placeholder="What's your name?">
+		    	</div>
+		    	<div class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
+		    		<div class="input-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01">
+							<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						</div>
+		    		</div>
+		    	</div>
+		  	</div>
+		  	<hr class="col-xs-12 col-md-9 offset-md-1 hr-pink">
+		  	<!-- Parent -->
+		  	<div id="parentRow" class="form-group row">
+		  		<label for="parent" class="col-xs-12 col-sm-4 col-md-3 offset-md-1 col-form-label">
+		  			Parent :
+		  			<button type="button" class="btn btn-outline-success btn-sm" onclick="addParent();"><i class="fas fa-plus"></i></button>
+		  			<button type="button" class="btn btn-outline-danger btn-sm" onclick="delParent();"><i class="fas fa-minus"></i></button>
+		  		</label>
+		  		<div id="p1" class="col-xs-12 col-sm-8 col-md-6">
+		  			<div class="input-group">
+		  				<div class="input-group-prepend">
+							<span class="input-group-text parentNum">1.</span>
+						</div>
+			  			<input type="text" class="form-control" id="parent1" placeholder="What's your parent's name?">
+		  			</div>
+		  		</div>
+		  		<div id="pp1" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
+		  			<div class="input-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="parentPhoto1">
+							<label class="custom-file-label" for="parentPhoto1">Choose file</label>
+						</div>
+		    		</div>
+		  		</div>
+		  	</div>
+		  	<hr class="col-xs-12 col-md-9 offset-md-1 hr-pink">
+		  	<!-- Spouse -->
+		  	<div class="form-group row">
+				<label for="spouse" class="col-xs-12 col-sm-4 col-md-3 offset-md-1 col-form-label">
+					Spouse :
+				</label>
+				<div class="col-xs-12 col-sm-8 col-md-6">
+		      		<input type="text" class="form-control" id="spouse" placeholder="What's your Spouse's name?">
+		    	</div>
+		    	<div class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
+		  			<div class="input-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01">
+							<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						</div>
+		    		</div>
+		  		</div>
+		  	</div>
+		  	<hr class="col-xs-12 col-md-9 offset-md-1 hr-pink">
+		  	<!-- Children -->
+		  	<div id="childrenRow" class="form-group row">
+		  		<label for="spouse" class="col-xs-12 col-sm-4 col-md-3 offset-md-1 col-form-label">
+					Children :
+					<button type="button" class="btn btn-outline-success btn-sm" onclick="addChild();"><i class="fas fa-plus"></i></button>
+		  			<button type="button" class="btn btn-outline-danger btn-sm" onclick="delChild();"><i class="fas fa-minus"></i></button>
+				</label>
+				<div id="c1" class="col-xs-12 col-sm-8 col-md-6">
+		      		<div class="input-group">
+		  				<div class="input-group-prepend">
+							<span class="input-group-text childNum">1.</span>
+						</div>
+			  			<input type="text" class="form-control" placeholder="What's your child's name?">
+		  			</div>
+		    	</div>
+		    	<div id="cc1" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
+		    		<div class="input-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="parentPhoto1">
+							<label class="custom-file-label" for="parentPhoto1">Choose file</label>
+						</div>
+		    		</div>
+		    	</div>
+		  	</div>
+		</form>
+	</div>
+</body>
+</html>
