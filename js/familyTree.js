@@ -14,14 +14,14 @@ function addParent() {
 				<div class="input-group-prepend">
 					<span class="input-group-text parentNum">${nextParentNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" id="parent1" placeholder="What's your parent's name?">
+			  	<input type="text" class="form-control" placeholder="What's your parent's name?">
 		  	</div>
 		</div>
 		<div id="pp${nextParentNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 			<div class="input-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="parentPhoto1">
-					<label class="custom-file-label" for="parentPhoto1">Choose file</label>
+					<input type="file" class="custom-file-input">
+					<label class="custom-file-label">Choose file</label>
 				</div>
 		   	</div>
 		</div>`;
@@ -32,14 +32,14 @@ function addParent() {
 				<div class="input-group-prepend">
 					<span class="input-group-text parentNum">${nextParentNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" id="parent1" placeholder="What's your parent's name?">
+			  	<input type="text" class="form-control" placeholder="What's your parent's name?">
 		  	</div>
 		</div>
 		<div id="pp${nextParentNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 			<div class="input-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="parentPhoto1">
-					<label class="custom-file-label" for="parentPhoto1">Choose file</label>
+					<input type="file" class="custom-file-input">
+					<label class="custom-file-label">Choose file</label>
 				</div>
 		   	</div>
 		</div>`;
@@ -70,7 +70,7 @@ function addChild() {
 				<div class="input-group-prepend">
 					<span class="input-group-text childNum">${nextChildNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" id="parent1" placeholder="What's your child's name?">
+			  	<input type="text" class="form-control" placeholder="What's your child's name?">
 		  	</div>
 		</div>
 		<div id="cc${nextChildNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
