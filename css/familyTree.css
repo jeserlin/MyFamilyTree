@@ -16,3 +16,6 @@
 	background-color: orange;
 	border-color: orange;
 }
+.custom-file-label {
+	content: attr(data-title);
+}

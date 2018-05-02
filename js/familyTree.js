@@ -1,3 +1,19 @@
+//read photo infotmation
+function readUrl(input) {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      let imgData = e.target.result;//image:base64
+      let imgName = input.files[0].name;
+      let labelId = input.id + `_label`;
+      let base64Id = input.id + `_64`;
+      $('#' + labelId).text(imgName);
+      $('#' + base64Id).val(imgData);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
 //add inputs for parent
 function addParent() {
 	var parentNum = getLastNum("parentNum");
@@ -20,8 +36,9 @@ function addParent() {
 		<div id="pp${nextParentNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 			<div class="input-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input">
-					<label class="custom-file-label">Choose file</label>
+					<input id="parentPhoto${nextParentNum}" type="file" class="custom-file-input" onchange="readUrl(this)">
+					<input id="parentPhoto${nextParentNum}_64" tyle="hidden">
+					<label id="parentPhoto${nextParentNum}_label" class="custom-file-label" for="parentPhoto${nextParentNum}">Choose file</label>
 				</div>
 		   	</div>
 		</div>`;
@@ -38,8 +55,9 @@ function addParent() {
 		<div id="pp${nextParentNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 			<div class="input-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input">
-					<label class="custom-file-label">Choose file</label>
+					<input id="parentPhoto${nextParentNum}" type="file" class="custom-file-input" onchange="readUrl(this)">
+					<input id="parentPhoto${nextParentNum}_64" tyle="hidden">
+					<label id="parentPhoto${nextParentNum}_label" class="custom-file-label" for="parentPhoto${nextParentNum}">Choose file</label>
 				</div>
 		   	</div>
 		</div>`;
@@ -76,8 +94,9 @@ function addChild() {
 		<div id="cc${nextChildNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 			<div class="input-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input">
-					<label class="custom-file-label">Choose file</label>
+					<input id="childPhoto${nextChildNum}" type="file" class="custom-file-input" onchange="readUrl(this)">
+					<input id="childPhoto${nextChildNum}_64" tyle="hidden">
+					<label id="childPhoto${nextChildNum}_label" class="custom-file-label">Choose file</label>
 				</div>
 		   	</div>
 		</div>`;
@@ -94,8 +113,9 @@ function addChild() {
 		<div id="cc${nextChildNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 			<div class="input-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input">
-					<label class="custom-file-label">Choose file</label>
+					<input id="childPhoto${nextChildNum}" type="file" class="custom-file-input" onchange="readUrl(this)">
+					<input id="childPhoto${nextChildNum}_64" tyle="hidden">
+					<label id="childPhoto${nextChildNum}_label" class="custom-file-label">Choose file</label>
 				</div>
 		   	</div>
 		</div>`;
@@ -108,6 +128,20 @@ function delChild() {
 	var childNum = getLastNum("childNum");
 	$(`#c` + childNum).remove();
 	$(`#cc` + childNum).remove();
+}
+
+//create my family tree svg
+function createSvg() {
+	var data = createData();
+	console.log(data);
+}
+
+//create json data
+function createData() {
+	var data = `
+		{}
+	`;
+	return data;
 }
 
 // get last index by class name.
