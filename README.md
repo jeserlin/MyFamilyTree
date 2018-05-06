@@ -13,3 +13,4 @@ My Family tree is a site that you can upload your family members' photo to make 
 * Jquery 3.3.1
 * Bootstrap 4.0
 * svg
+* sessionStorage
