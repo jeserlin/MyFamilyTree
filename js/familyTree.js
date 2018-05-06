@@ -7,8 +7,8 @@ function readUrl(input) {
       let imgName = input.files[0].name;
       let labelId = input.id + `_label`;
       let base64Id = input.id + `_64`;
-      $('#' + labelId).text(imgName);
-      $('#' + base64Id).val(imgData);
+      $(`#` + labelId).text(imgName);
+      $(`#` + base64Id).val(imgData);
     }
     reader.readAsDataURL(input.files[0]);
   }
@@ -16,9 +16,9 @@ function readUrl(input) {
 
 //add inputs for parent
 function addParent() {
-	var parentNum = getLastNum("parentNum");
+	var parentNum = getLastNum(`parentNum`);
 	if(Number(parentNum) == 4) {
-		alert("max");
+		alert(`max`);
 		return;
 	}
 	var nextParentNum = Number(parentNum) + 1;
@@ -30,7 +30,7 @@ function addParent() {
 				<div class="input-group-prepend">
 					<span class="input-group-text parentNum">${nextParentNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" placeholder="What's your parent's name?">
+			  	<input id="parentName${nextParentNum}" type="text" class="form-control" placeholder="What's your parent's name?">
 		  	</div>
 		</div>
 		<div id="pp${nextParentNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
@@ -49,7 +49,7 @@ function addParent() {
 				<div class="input-group-prepend">
 					<span class="input-group-text parentNum">${nextParentNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" placeholder="What's your parent's name?">
+			  	<input id="parentName${nextParentNum}" type="text" class="form-control" placeholder="What's your parent's name?">
 		  	</div>
 		</div>
 		<div id="pp${nextParentNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
@@ -76,7 +76,7 @@ function delParent() {
 function addChild() {
 	var childNum = getLastNum("childNum");
 	if(Number(childNum) == 12) {
-		alert("max");
+		alert(`max`);
 		return;
 	}
 	var nextChildNum = Number(childNum) + 1;
@@ -88,7 +88,7 @@ function addChild() {
 				<div class="input-group-prepend">
 					<span class="input-group-text childNum">${nextChildNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" placeholder="What's your child's name?">
+			  	<input id="childName${nextChildNum}" type="text" class="form-control" placeholder="What's your child's name?">
 		  	</div>
 		</div>
 		<div id="cc${nextChildNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
@@ -107,7 +107,7 @@ function addChild() {
 				<div class="input-group-prepend">
 					<span class="input-group-text childNum">${nextChildNum + '.'}</span>
 				</div>
-			  	<input type="text" class="form-control" placeholder="What's your child's name?">
+			  	<input id="childName${nextChildNum}" type="text" class="form-control" placeholder="What's your child's name?">
 		  	</div>
 		</div>
 		<div id="cc${nextChildNum}" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
@@ -120,7 +120,7 @@ function addChild() {
 		   	</div>
 		</div>`;
 	}
-	$('#childrenRow').append(html);
+	$(`#childrenRow`).append(html);
 }
 
 //delete input for child
@@ -132,20 +132,49 @@ function delChild() {
 
 //create my family tree svg
 function createSvg() {
+	//location.href = "myFamilyTree_result.html";
 	var data = createData();
 	console.log(data);
 }
 
 //create json data
 function createData() {
-	var data = `
-		{}
-	`;
+	var data = {};
+	//me
+	const myName = $(`#myName`).val();
+	const myPhoto = $(`#myPhoto_64`).val();
+	data.myName = myName;
+	data.myPhoto = myPhoto;
+	//spouse
+	const spouseName = $(`#spouseName`).val();
+	const spousePhoto = $(`#spousePhoto_64`).val();
+	data.spouseName = spouseName;
+	data.spousePhoto = spousePhoto;
+	//parent
+	const parent = [];
+	const parentNum = getLastNum(`parentNum`);
+	for(let i = 1; i <= parentNum; i++) {
+		const obj = {};
+		obj[`parentName`] = $(`#parentName` + i).val();
+		obj[`parentPhoto`] = $(`#parentPhoto` + i).val();
+		parent.push(obj);
+	}
+	data.parent = parent;
+	//children
+	const children = [];
+	const childNum = getLastNum(`childNum`);
+	for(let i = 1; i <= childNum; i++) {
+		const obj = {};
+		obj[`childName`] = $(`#childName` + i).val();
+		obj[`childPhoto`] =  $(`#childPhoto` + i).val();
+		children.push(obj);
+	}
+	data.children = children;
 	return data;
 }
 
 // get last index by class name.
 function getLastNum(className) {
-	var lastNum = $(`.` + className + `:last`).text().replace(".","");
+	var lastNum = $(`.` + className + `:last`).text().replace(`.`,``);
 	return lastNum;
 }

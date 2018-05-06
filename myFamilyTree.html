@@ -65,18 +65,18 @@
 		  	<hr class="col-xs-12 col-md-9 offset-md-1 hr-pink">
 		  	<!-- Spouse -->
 		  	<div class="form-group row">
-				<label for="spouse" class="col-xs-12 col-sm-4 col-md-3 offset-md-1 col-form-label">
+				<label for="spouseName" class="col-xs-12 col-sm-4 col-md-3 offset-md-1 col-form-label">
 					Spouse :
 				</label>
 				<div class="col-xs-12 col-sm-8 col-md-6">
-		      		<input type="text" class="form-control" id="spouse" placeholder="What's your Spouse's name?">
+		      		<input id="spouseName" type="text" class="form-control" placeholder="What's your Spouse's name?">
 		    	</div>
 		    	<div class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
 		  			<div class="input-group">
 						<div class="custom-file">
-							<input id="spousePhoto1" type="file" class="custom-file-input" onchange="readUrl(this)">
-							<input id="spousePhoto1_64" tyle="hidden">
-							<label id="spousePhoto1_label" class="custom-file-label" for="spousePhoto1">Choose file</label>
+							<input id="spousePhoto" type="file" class="custom-file-input" onchange="readUrl(this)">
+							<input id="spousePhoto_64" tyle="hidden">
+							<label id="spousePhoto_label" class="custom-file-label" for="spousePhoto1">Choose file</label>
 						</div>
 		    		</div>
 		  		</div>
@@ -94,7 +94,7 @@
 		  				<div class="input-group-prepend">
 							<span class="input-group-text childNum">1.</span>
 						</div>
-			  			<input type="text" class="form-control" placeholder="What's your child's name?">
+			  			<input id="childName1" type="text" class="form-control" placeholder="What's your child's name?">
 		  			</div>
 		    	</div>
 		    	<div id="cc1" class="col-xs-12 col-sm-8 offset-sm-4 col-md-6 offset-md-4 mt-3">
@@ -109,9 +109,7 @@
 		  	</div>
 		</form>
 		<div class="col-xs-12 mb-3" align="right">
-			<a href="myFamilyTree_result.html">
-				<button type="button" class="btn btn-orange" onclick="createSvg();">Next</button>
-			</a>
+			<button type="button" class="btn btn-orange" onclick="createSvg();">Next</button>
 		</div>
 	</div>
 </body>
