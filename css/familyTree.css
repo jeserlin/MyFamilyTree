@@ -1,3 +1,6 @@
+body {
+	background-color: #fef5e6 !important;
+}
 .bg-orange {
 	background-color: #fcd8a2 !important;
 }
@@ -18,4 +21,8 @@
 }
 .custom-file-label {
 	content: attr(data-title);
+}
+.input-group-text , .custom-file-label::after{
+	color: #495057;
+	background-color: #fcd8a2;
 }

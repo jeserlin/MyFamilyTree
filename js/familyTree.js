@@ -339,3 +339,9 @@ function getLastNum(className) {
 	var lastNum = $(`.` + className + `:last`).text().replace(`.`,``);
 	return lastNum;
 }
+
+// back to main
+function back() {
+	sessionStorage.clear();
+	location.href = "myFamilyTree.html";
+}

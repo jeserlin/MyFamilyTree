@@ -19,8 +19,11 @@
 	    My Family Tree
 	  </a>
 	</nav>
-	<div class="container pt-5">
-		<div class="col-xs-12">
+	<div class="container pt-3">
+		<div class="col-xs-12 pt-2" align="left">
+			<button type="button" class="btn btn-orange" onclick="back();">Back</button>
+		</div>
+		<div class="col-xs-12 pt-3">
 			<svg id="svg_tree" viewBox="0 0 1024 768">
 				<image xlink:href="img/bg.png" width="1024" height="768" style="width: 1024px; height: 768px;"></image>
 			</svg>
@@ -30,7 +33,6 @@
     	$(document).ready(function() {
     		var data = sessionStorage.getItem("data");
     		data = JSON.parse(data);
-    		console.log(data);
     		if(data != null) {
 				members(data);
     		}
