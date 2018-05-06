@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="plugin/bootstrap-4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/familyTree.css">
     <!-- JS -->
-    <script defer src="plugin/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="plugin/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
     <script defer src="plugin/fontawsome-5.0.6/fontawesome-all.min.js"></script>
     <script src="js/familyTree.js"></script>
     <script src="js/svgPosition.js"></script>
@@ -21,10 +21,18 @@
 	</nav>
 	<div class="container pt-5">
 		<div class="col-xs-12">
-			<svg viewBox="0 0 1024 768" id="svg_tree">
+			<svg id="svg_tree" viewBox="0 0 1024 768">
 				<image xlink:href="img/bg-tree.png" width="1024" height="768" style="width: 1024px; height: 768px;"></image>
 			</svg>
 		</div>
 	</div>
+	<script type="text/javascript">
+    	$(document).ready(function() {
+    		var data = sessionStorage.getItem("data");
+    		data = JSON.parse(data);
+    		console.log(data);
+    		me(data);
+    	});
+    </script>
 </body>
 </html>

@@ -132,31 +132,95 @@ function delChild() {
 
 //create my family tree svg
 function createSvg() {
-	//location.href = "myFamilyTree_result.html";
 	var data = createData();
-	console.log(data);
+	sessionStorage.setItem("data", JSON.stringify(data));
+	location.href = "myFamilyTree_result.html";
+	//console.log(data);
+}
+
+//create svg(me)
+function me(data) {
+	var myPosition = allPosition.me;
+	addElement(data, myPosition);
+}
+
+function addElement(data, position) {
+	var svg = $(`#svg_tree`);
+	var circleImg = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+	circleImg.style.width = '84px';
+	circleImg.style.height = '63px';
+	circleImg.setAttributeNS(null,'width','84');
+	circleImg.setAttributeNS(null,'height','63');
+	circleImg.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href','img/img1.png');
+	circleImg.setAttributeNS(null, 'transform', 'translate(' + position.circleImg.x +',' + position.circleImg.y + ')');
+	svg.append(circleImg);
+	var clipPath = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');
+	clipPath.setAttributeNS(null,'id','clipImg');
+	var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+	circle.setAttributeNS(null,'cx','42');
+	circle.setAttributeNS(null,'cy','40');
+	circle.setAttributeNS(null,'r','40'); 
+	clipPath.append(circle);
+	svg.append(clipPath);
+	var photoImg = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+	photoImg.style.width = '84px';
+	photoImg.style.height = '63px';
+	photoImg.setAttributeNS(null,'width','84');
+	photoImg.setAttributeNS(null,'height','63');
+	var imageBse64Str = data.imageBase64Str;
+	if(imageBse64Str == "") {
+		if(data.personId.substring(1,2) == "2") {
+			imageBse64Str = 'img/img-g.png';
+		} else {
+			imageBse64Str = 'img/img-b.png';
+		}
+	}
+	photoImg.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href', imageBse64Str);
+	photoImg.setAttributeNS(null, 'transform', 'translate(' + position.photoImg.x +',' + position.photoImg.y + ')');
+	photoImg.setAttributeNS(null,'clip-path','url(#clipImg)');
+	svg.append(photoImg);
+	var textBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+	textBar.style.width = '100px';
+	textBar.style.height = '30px';
+	textBar.setAttributeNS(null,'width','100');
+	textBar.setAttributeNS(null,'height','30');
+	textBar.setAttributeNS(null,'rx','10');
+	textBar.setAttributeNS(null,'ry','10');
+	textBar.setAttributeNS(null,'fill','rgb(246, 174, 151)');
+	textBar.setAttributeNS(null, 'transform', 'translate(' + position.textBar.x +',' + position.textBar.y +')');
+	svg.append(textBar);
+	var name = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+	name.setAttributeNS(null,'font-size','16');
+	name.setAttributeNS(null,'text-anchor','middle');
+	name.setAttributeNS(null,'x','10');
+	name.setAttributeNS(null,'y','20');
+	name.setAttributeNS(null, 'transform', 'translate(' + position.id.x +',' + position.id.y +')');
+	name.innerHTML = data.name;
+	svg.append(name);
 }
 
 //create json data
 function createData() {
-	var data = {};
+	const data = {};
 	//me
 	const myName = $(`#myName`).val();
 	const myPhoto = $(`#myPhoto_64`).val();
-	data.myName = myName;
-	data.myPhoto = myPhoto;
+	data.name = myName;
+	data.imageBase64Str = myPhoto;
 	//spouse
-	const spouseName = $(`#spouseName`).val();
-	const spousePhoto = $(`#spousePhoto_64`).val();
-	data.spouseName = spouseName;
-	data.spousePhoto = spousePhoto;
+	const spouse = [];
+	const obj = {};
+	obj[`name`] = $(`#spouseName`).val();
+	obj[`imageBase64Str`] =  $(`#spousePhoto_64`).val();
+	spouse.push(obj);
+	data.spouse = spouse;
 	//parent
 	const parent = [];
 	const parentNum = getLastNum(`parentNum`);
 	for(let i = 1; i <= parentNum; i++) {
 		const obj = {};
-		obj[`parentName`] = $(`#parentName` + i).val();
-		obj[`parentPhoto`] = $(`#parentPhoto` + i).val();
+		obj[`name`] = $(`#parentName` + i).val();
+		obj[`imageBase64Str`] = $(`#parentPhoto` + i).val();
 		parent.push(obj);
 	}
 	data.parent = parent;
@@ -165,8 +229,8 @@ function createData() {
 	const childNum = getLastNum(`childNum`);
 	for(let i = 1; i <= childNum; i++) {
 		const obj = {};
-		obj[`childName`] = $(`#childName` + i).val();
-		obj[`childPhoto`] =  $(`#childPhoto` + i).val();
+		obj[`name`] = $(`#childName` + i).val();
+		obj[`imageBase64Str`] =  $(`#childPhoto` + i).val();
 		children.push(obj);
 	}
 	data.children = children;
