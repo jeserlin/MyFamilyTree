@@ -22,7 +22,7 @@
 	<div class="container pt-5">
 		<div class="col-xs-12">
 			<svg id="svg_tree" viewBox="0 0 1024 768">
-				<image xlink:href="img/bg-tree.png" width="1024" height="768" style="width: 1024px; height: 768px;"></image>
+				<image xlink:href="img/bg.png" width="1024" height="768" style="width: 1024px; height: 768px;"></image>
 			</svg>
 		</div>
 	</div>
@@ -31,7 +31,9 @@
     		var data = sessionStorage.getItem("data");
     		data = JSON.parse(data);
     		console.log(data);
-    		me(data);
+    		if(data != null) {
+				members(data);
+    		}
     	});
     </script>
 </body>
