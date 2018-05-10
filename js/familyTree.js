@@ -238,7 +238,7 @@ function members(data) {
 
 function addElement(data, position) {
 	if(data.name) {
-		var svg = $(`#svg_tree`);
+		var svg = document.getElementById(`svg_tree`);
 		var circleImg = document.createElementNS('http://www.w3.org/2000/svg', 'image');
 		circleImg.style.width = '84px';
 		circleImg.style.height = '63px';
@@ -246,15 +246,15 @@ function addElement(data, position) {
 		circleImg.setAttributeNS(null,'height','63');
 		circleImg.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href','img/img1.png');
 		circleImg.setAttributeNS(null, 'transform', 'translate(' + position.circleImg.x +',' + position.circleImg.y + ')');
-		svg.append(circleImg);
+		svg.appendChild(circleImg);
 		var clipPath = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');
 		clipPath.setAttributeNS(null,'id','clipImg');
 		var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 		circle.setAttributeNS(null,'cx','42');
 		circle.setAttributeNS(null,'cy','40');
 		circle.setAttributeNS(null,'r','40'); 
-		clipPath.append(circle);
-		svg.append(clipPath);
+		clipPath.appendChild(circle);
+		svg.appendChild(clipPath);
 		var photoImg = document.createElementNS('http://www.w3.org/2000/svg', 'image');
 		photoImg.style.width = '84px';
 		photoImg.style.height = '63px';
@@ -271,7 +271,7 @@ function addElement(data, position) {
 		photoImg.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href', imageBse64Str);
 		photoImg.setAttributeNS(null, 'transform', 'translate(' + position.photoImg.x +',' + position.photoImg.y + ')');
 		photoImg.setAttributeNS(null,'clip-path','url(#clipImg)');
-		svg.append(photoImg);
+		svg.appendChild(photoImg);
 		var textBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 		textBar.style.width = '100px';
 		textBar.style.height = '30px';
@@ -281,15 +281,15 @@ function addElement(data, position) {
 		textBar.setAttributeNS(null,'ry','10');
 		textBar.setAttributeNS(null,'fill','rgb(246, 174, 151)');
 		textBar.setAttributeNS(null, 'transform', 'translate(' + position.textBar.x +',' + position.textBar.y +')');
-		svg.append(textBar);
+		svg.appendChild(textBar);
 		var name = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 		name.setAttributeNS(null,'font-size','16');
 		name.setAttributeNS(null,'text-anchor','middle');
 		name.setAttributeNS(null,'x','10');
 		name.setAttributeNS(null,'y','20');
 		name.setAttributeNS(null, 'transform', 'translate(' + position.id.x +',' + position.id.y +')');
-		name.innerHTML = data.name;
-		svg.append(name);
+		name.textContent = data.name;
+		svg.appendChild(name);
 	}
 }
 
